@@ -5,10 +5,14 @@ pipeline {
             steps {
                 echo " this is build stage "
                 sh " sleep 5 "
+    }
+}
         stage('deploy') {
             steps {
                 echo " this is deploy stage "
                 sh " sleep 5 "
+    }
+}
         stage('test') {
             steps {
                 echo " this is test stage "
