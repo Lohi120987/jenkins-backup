@@ -2,14 +2,14 @@ pipeline {
     agent none
     stages{
         stage('build') {
-            agent { label 'default label' }
+            agent { label 'defaultlabel' }
             steps {
                 echo " this is build stage "
                 sh " sleep 5 "
     }
 }
         stage('deploy') {
-            agent { label 'c-project' }
+            agent { label 'cproject' }
             steps {
                 echo " this is deploy stage "
                 sh " sleep 5 "
