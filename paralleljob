@@ -1,0 +1,39 @@
+pipeline {
+    agent none
+    stages{
+        stage('build') {
+        parallel {
+            stage('build1') {
+            agent { label 'defaultlabel' }
+            steps {
+                echo " this is build stage "
+                sh " sleep 5 "
+         }
+    }
+        stage('build2') {
+            agent { label 'defaultlabel' }
+            steps {
+                echo " this is build stage "
+                sh " sleep 5 "
+           }
+       }
+   }
+}
+parallel {
+stage('deploy') {
+            agent { label 'cproject' }
+            steps {
+                echo " this is deploy stage "
+                sh " sleep 5 "
+    }
+}
+        stage('test') {
+            agent any
+            steps {
+                echo " this is test stage "
+                sh " sleep 5 "
+            }
+          }
+        }
+    }
+}
