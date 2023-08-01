@@ -17,7 +17,7 @@ pipeline {
                 sh " sleep 5 "
         }
     }
-          stage('deploy1') {
+          stage('deploy2') {
             agent { label 'defaultlabel' }
             steps {
                 echo " this is deploy stage "
