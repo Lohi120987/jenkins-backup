@@ -2,32 +2,29 @@ pipeline {
     agent none
     stages{
         stage('build') {
-        parallel {
-            stage('build1') {
             agent { label 'defaultlabel' }
             steps {
                 echo " this is build stage "
                 sh " sleep 5 "
          }
     }
-        stage('build2') {
-            agent { label 'defaultlabel' }
-            steps {
-                echo " this is build stage "
-                sh " sleep 5 "
-            }
-        }
-    }
- }
-}
-stages {
-parallel {
-stage('deploy') {
+        stage('deploy') {
+        parallel {
+          stage('deploy1') {
             agent { label 'cproject' }
             steps {
                 echo " this is deploy stage "
                 sh " sleep 5 "
+        }
     }
+          stage('deploy1') {
+            agent { label 'defaultlabel' }
+            steps {
+                echo " this is deploy stage "
+                sh " sleep 5 "
+        } 
+      }
+   }
 }
         stage('test') {
             agent any
@@ -36,6 +33,5 @@ stage('deploy') {
                 sh " sleep 5 "
             }
           }
-        }
     }
 }
